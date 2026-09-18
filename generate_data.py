@@ -21,8 +21,8 @@ THRESHOLD_AMOUNTS = np.array([999, 1499, 1999, 2499])
 
 
 def _normal_amount(rng: np.random.Generator, base: float = 350, scale: float = 180) -> float:
-    """Generate a realistic-looking transaction amount."""
-    return round(float(rng.normal(base, scale)), 2)
+    """Generate a realistic-looking transaction amount (always positive)."""
+    return max(1.0, round(float(rng.normal(base, scale)), 2))
 
 
 def _build_velocity_transactions(
